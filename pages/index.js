@@ -1,9 +1,18 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Link from 'next/link'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 export default function Home() {
+  function randomIntFromInterval(min, max) {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  const img = `https://picsum.photos/${randomIntFromInterval(
+    200,
+    800
+  )}/${randomIntFromInterval(200, 800)}`;
   return (
     <div className={styles.container}>
       <Head>
@@ -13,35 +22,32 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-    <div className={styles.container}>
-      <div className={styles.profile_pic}>
-        <Image
-          src="/images/me.jpg"
-          alt="Picture of Sriraj Bura"
-          className={styles.img}
-          width={250}
-          height={250}
-        />
-      </div>
-      <div className={styles.links}>
-        <div className={styles.link}>
-          <Link href="https://twitter.com/SrirajBura">
-            <a>Twitter</a>
-          </Link>
+        <div className={styles.container}>
+          <div className={styles.profile_pic}>
+            <figure
+              className="avatar"
+              style={{ backgroundImage: `url(${img})` }}
+            />
+          </div>
+          <div className={styles.links}>
+            <Link href="https://twitter.com/SrirajBura">
+              <button className={styles.link}>
+                <a>Twitter</a>
+              </button>
+            </Link>
+            <Link href="https://github.com/srirajbura16">
+              <button className={styles.link}>
+                <a>Github</a>
+              </button>
+            </Link>
+            <Link href="https://www.linkedin.com/in/srirajbura/">
+              <button className={styles.link}>
+                <a>Linkedin</a>
+              </button>
+            </Link>
+          </div>
         </div>
-        <div className={styles.link}>
-          <Link href="https://github.com/srirajbura16">
-            <a>Github</a>
-          </Link>
-        </div>
-        <div className={styles.link}>
-          <Link href="https://www.linkedin.com/in/srirajbura/">
-            <a>Linkedin</a>
-          </Link>
-        </div>
-      </div>
-    </div>
       </main>
     </div>
-  )
+  );
 }
