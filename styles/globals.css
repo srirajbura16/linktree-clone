@@ -24,13 +24,3 @@ a {
 button {
   cursor: pointer;
 }
-
-.avatar {
-  width: 200px;
-  height: 200px;
-  background: black;
-  border-radius: 50%;
-  margin: 0 auto;
-  background-size: cover;
-  background-position: center;
-}

@@ -21,7 +21,10 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <figure className="avatar" style={{ backgroundImage: `url(${img})` }} />
+        <figure
+          className={styles.avatar}
+          style={{ backgroundImage: `url(${img})` }}
+        />
         <h2 className={styles.name}>John Doe</h2>
         <p className={styles.description}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde,
@@ -44,6 +47,8 @@ export default function Home() {
             </button>
           </Link>
         </div>
+
+        <div className={styles.social_icons}></div>
       </main>
     </div>
   );

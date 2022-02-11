@@ -1,13 +1,27 @@
 .container {
   padding: 0 2rem;
   max-width: 800px;
-  margin: 5rem auto 0 auto;
+  margin: 2rem auto 0 auto;
   font-size: 1.5rem;
   text-align: center;
 }
 
+.avatar {
+  width: 200px;
+  height: 200px;
+  background: black;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+}
+
 .name {
+  font-size: 1.5em;
   margin-top: 2rem;
+}
+
+.description {
 }
 
 .links {
@@ -17,7 +31,7 @@
 }
 
 .link {
-  font-size: 1.2rem;
+  font-size: 1em;
   width: 100%;
   padding: 1rem;
   border: 1px black solid;
@@ -27,4 +41,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .container {
+    font-size: 1.2rem;
+  }
 }
