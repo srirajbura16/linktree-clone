@@ -15,14 +15,18 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Sriraj Bura</title>
+        <title>John Doe</title>
         <meta name="description" content="Sriraj Bura's Links" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <figure className="avatar" style={{ backgroundImage: `url(${img})` }} />
-        <p className={styles.name}>Sriraj Bura</p>
+        <h2 className={styles.name}>John Doe</h2>
+        <p className={styles.description}>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde,
+          libero.
+        </p>
         <div className={styles.links}>
           <Link href="https://twitter.com/SrirajBura">
             <button className={styles.link}>
