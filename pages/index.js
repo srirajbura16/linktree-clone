@@ -25,12 +25,14 @@ export default function Home() {
           className={styles.avatar}
           style={{ backgroundImage: `url(${img})` }}
         />
-        <h2 className={styles.name}>John Doe</h2>
-        <p className={styles.description}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde,
-          libero.
-        </p>
-        <div className={styles.links}>
+        <section>
+          <h2 className={styles.name}>John Doe</h2>
+          <p className={styles.description}>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde,
+            libero.
+          </p>
+        </section>
+        <section className={styles.links}>
           <Link href="https://twitter.com/SrirajBura">
             <button className={styles.link}>
               <a>Twitter</a>
@@ -46,7 +48,7 @@ export default function Home() {
               <a>Linkedin</a>
             </button>
           </Link>
-        </div>
+        </section>
 
         <div className={styles.social_icons}></div>
       </main>
