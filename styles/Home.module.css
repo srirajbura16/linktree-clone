@@ -21,9 +21,6 @@
   margin-top: 2rem;
 }
 
-.description {
-}
-
 .links {
   display: flex;
   flex-direction: column;
@@ -37,6 +34,7 @@
   border: 1px black solid;
   border-radius: 1rem;
   margin-top: 2rem;
+  background: white;
 
   display: flex;
   justify-content: center;
