@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-
-export default function Home() {
+import Url from "../components/Url";
+export default function Home({ data: { records } }) {
   function randomIntFromInterval(min, max) {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -33,19 +33,37 @@ export default function Home() {
           </p>
         </section>
         <section className={styles.links}>
-          <Link href="https://twitter.com/SrirajBura">
-            <a className={styles.link}>Twitter</a>
-          </Link>
-          <Link href="https://github.com/srirajbura16">
-            <a className={styles.link}>Github</a>
-          </Link>
-          <Link href="https://www.linkedin.com/in/srirajbura/">
-            <a className={styles.link}>Linkedin</a>
-          </Link>
+          {records.map((link) => {
+            return <Url link={link} key={link.id} />;
+          })}
         </section>
-
         <div className={styles.social_icons}></div>
       </main>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  var bodyRaw = {
+    columns: ["url", "title"],
+  };
+  var requestOptions = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.XATA_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(bodyRaw),
+  };
+
+  const res = await fetch(
+    "https://open-mpqb7l.xata.sh/db/Linktree:main/tables/Links/query",
+    requestOptions
+  );
+
+  const data = await res.json();
+
+  return {
+    props: { data },
+  };
 }
