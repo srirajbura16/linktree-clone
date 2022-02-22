@@ -7,6 +7,11 @@ A simple conduit for all your internet presense
 We're taking it step by step in building this application, so the tech added here maybe changed in the future.
 
 - NextJS
+- Xatabase
+
+## Media
+
+![Database modles](./public/images/db-models.png)
 
 ## Thanks to
 
