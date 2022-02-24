@@ -84,5 +84,5 @@ export async function getStaticPaths() {
     params: { username: user.username },
   }));
 
-  return { paths, fallback: true };
+  return { paths, fallback: "blocking" };
 }
