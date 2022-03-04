@@ -15,6 +15,9 @@ export default function Home() {
         <Link href="/johndoe">johndoe</Link>
         **
         <Link href="/janedoe">janedoe</Link>
+        <div>
+          <Link href="/api/auth/signin">Login</Link>
+        </div>
       </main>
     </div>
   );
