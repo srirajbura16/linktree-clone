@@ -75,7 +75,7 @@ export async function getStaticPaths() {
   };
 
   const res = await fetch(
-    "https://open-mpqb7l.xata.sh/db/Linktree:main/tables/Users/query",
+    `${process.env.XATA_URL}/tables/Users/query`,
     requestOptions
   );
 
