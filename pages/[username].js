@@ -1,8 +1,11 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Url from "../components/Url";
+import { getXataHeaders, DB_PATH } from "../services";
+console.log(DB_PATH);
 
 export default function Username({ data: { records } }) {
+  console.log(records, "from component");
   const { name, photo, description } = records[0].user;
 
   return (
@@ -43,18 +46,15 @@ export async function getStaticProps({ params }) {
   var requestOptions = {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${process.env.XATA_API_KEY}`,
-      "Content-Type": "application/json",
+      ...(await getXataHeaders()),
     },
     body: JSON.stringify(bodyRaw),
   };
 
-  const res = await fetch(
-    "https://open-mpqb7l.xata.sh/db/Linktree:main/tables/Links/query",
-    requestOptions
-  );
+  const res = await fetch(`${DB_PATH}/tables/Links/query`, requestOptions);
 
   const data = await res.json();
+  console.log(data, "from paths");
 
   return {
     props: { data },
@@ -68,18 +68,15 @@ export async function getStaticPaths() {
   var requestOptions = {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${process.env.XATA_API_KEY}`,
-      "Content-Type": "application/json",
+      ...(await getXataHeaders()),
     },
     body: JSON.stringify(bodyRaw),
   };
 
-  const res = await fetch(
-    `${process.env.XATA_URL}/tables/Users/query`,
-    requestOptions
-  );
+  const res = await fetch(`${DB_PATH}/tables/Users/query`, requestOptions);
 
   const users = await res.json();
+
   const paths = users.records.map((user) => ({
     params: { username: user.username },
   }));

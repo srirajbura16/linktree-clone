@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import TwitterProvider from "next-auth/providers/twitter";
 import GoogleProvider from "next-auth/providers/google";
+import XataAdapter from "../../../auth";
 
 export default NextAuth({
   providers: [
@@ -20,9 +21,11 @@ export default NextAuth({
     }),
   ],
 
-  theme: {
-    colorScheme: "auto", // "auto" | "dark" | "light"
-    brandColor: "", // Hex color code
-    logo: "", // Absolute URL to image
+  adapter: XataAdapter(),
+
+  session: {
+    strategy: "jwt",
+    maxAge: 24 * 3600,
   },
+  secret: process.env.JWT_SECRET,
 });
