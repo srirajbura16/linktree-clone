@@ -2,7 +2,6 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Url from "../components/Url";
 import { getXataHeaders, DB_PATH } from "../services";
-console.log(DB_PATH);
 
 export default function Username({ data: { records } }) {
   console.log(records, "from component");
@@ -54,7 +53,6 @@ export async function getStaticProps({ params }) {
   const res = await fetch(`${DB_PATH}/tables/Links/query`, requestOptions);
 
   const data = await res.json();
-  console.log(data, "from paths");
 
   return {
     props: { data },

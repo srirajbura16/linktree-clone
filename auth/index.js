@@ -11,7 +11,6 @@ export default function XataAdapter(client, options = {}) {
         body: JSON.stringify({
           name: user.name,
           email: user.email,
-          roles: ["mentor", "mentee"],
         }),
       });
       if (response.status > 299) {
