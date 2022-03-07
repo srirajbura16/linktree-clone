@@ -21,7 +21,7 @@ export default NextAuth({
     }),
   ],
 
-  adapter: XataAdapter(),
+  // adapter: XataAdapter(),
 
   session: {
     strategy: "jwt",
