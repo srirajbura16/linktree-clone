@@ -4,7 +4,6 @@ import Url from "../components/Url";
 import { getXataHeaders, DB_PATH } from "../services";
 
 export default function Username({ data: { records } }) {
-  console.log(records, "from component");
   const { name, photo, description } = records[0].user;
 
   return (

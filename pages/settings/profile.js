@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import FormLayout from "../../components/FormLayout";
+import FormLayout from "../../components/Layouts/FormLayout";
 
 export default function Profile() {
   return (
