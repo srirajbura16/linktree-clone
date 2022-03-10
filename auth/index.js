@@ -3,7 +3,7 @@ import { getXataHeaders, DB_PATH } from "../services";
 export default function XataAdapter(client, options = {}) {
   return {
     async createUser(user) {
-      const response = await fetch(`${DB_PATH}/tables/users/data`, {
+      const response = await fetch(`${DB_PATH}/tables/Users/data`, {
         method: "POST",
         headers: {
           ...(await getXataHeaders()),
@@ -29,7 +29,7 @@ export default function XataAdapter(client, options = {}) {
 
     async getUser(id) {
       console.log("getUser", id);
-      const response = await fetch(`${DB_PATH}/tables/users/data/${id}`, {
+      const response = await fetch(`${DB_PATH}/tables/Users/data/${id}`, {
         method: "GET",
         headers: {
           ...(await getXataHeaders()),
@@ -56,7 +56,7 @@ export default function XataAdapter(client, options = {}) {
     async getUserByEmail(email) {
       console.log("getUserByEmail", email);
 
-      const response = await fetch(`${DB_PATH}/tables/users/query`, {
+      const response = await fetch(`${DB_PATH}/tables/Users/query`, {
         method: "POST",
         headers: {
           ...(await getXataHeaders()),
