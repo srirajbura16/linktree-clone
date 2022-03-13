@@ -17,15 +17,26 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <p>Landing page</p>
-        <Link href="/johndoe">johndoe</Link>
-        **
-        <Link href="/janedoe">janedoe</Link>
         <div>
           {status === "authenticated" ? (
-            <p>Signed in as {session.user.name}</p>
+            <div>
+              <figure
+                className={styles.avatar}
+                style={{ backgroundImage: `url(${session.user.image})` }}
+              />
+              <p>Signed in as {session.user.name}</p>
+              <p>{session.user.email}</p>
+            </div>
           ) : (
-            <Link href="/api/auth/signin">Login</Link>
+            <div>
+              <p>Landing page</p>
+              <Link href="/johndoe">johndoe</Link>
+              **
+              <Link href="/janedoe">janedoe</Link>
+              <div>
+                <Link href="/api/auth/signin">Login</Link>
+              </div>
+            </div>
           )}
         </div>
       </main>
