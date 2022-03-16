@@ -3,8 +3,8 @@ import styles from "../styles/Home.module.css";
 import Url from "../components/Url";
 import { getXataHeaders, DB_PATH } from "../services";
 
-export default function Username({ data: { records } }) {
-  const { name, photo, description } = records[0].user;
+export default function Username({ user, links }) {
+  const { name, photo, description } = user.records[0];
 
   return (
     <div className={styles.container}>
@@ -24,7 +24,7 @@ export default function Username({ data: { records } }) {
           <p className={styles.description}>{description}</p>
         </section>
         <section className={styles.links}>
-          {records.map((link) => {
+          {links.records.map((link) => {
             return <Url link={link} key={link.id} />;
           })}
         </section>
@@ -35,26 +35,41 @@ export default function Username({ data: { records } }) {
 }
 
 export async function getStaticProps({ params }) {
-  var bodyRaw = {
-    columns: ["url", "title", "user.*"],
+  var userBodyRaw = {
+    columns: ["*"],
     filter: {
-      "user.username": `${params.username}`,
+      username: `${params.username}`,
     },
   };
-  var requestOptions = {
+
+  const user_res = await fetch(`${DB_PATH}/tables/Users/query`, {
     method: "POST",
     headers: {
       ...(await getXataHeaders()),
     },
-    body: JSON.stringify(bodyRaw),
+    body: JSON.stringify(userBodyRaw),
+  });
+  const user = await user_res.json();
+  const userId = user.records[0].id;
+
+  var linksBodyRaw = {
+    columns: ["*"],
+    filter: {
+      "user.id": userId,
+    },
   };
 
-  const res = await fetch(`${DB_PATH}/tables/Links/query`, requestOptions);
-
-  const data = await res.json();
-
+  const links_res = await fetch(`${DB_PATH}/tables/Links/query`, {
+    method: "POST",
+    headers: {
+      ...(await getXataHeaders()),
+    },
+    body: JSON.stringify(linksBodyRaw),
+  });
+  const links = await links_res.json();
+  console.log(user, links.records);
   return {
-    props: { data },
+    props: { user, links },
 
     revalidate: 10,
   };

@@ -80,7 +80,7 @@ export default function XataAdapter(client, options = {}) {
       }
       const user = records[0];
 
-      console.log("getUserByEmail: found user with id", user._id);
+      console.log("getUserByEmail: found user with id", user.id);
 
       return {
         id: user.id,
