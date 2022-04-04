@@ -67,7 +67,6 @@ export async function getStaticProps({ params }) {
     body: JSON.stringify(linksBodyRaw),
   });
   const links = await links_res.json();
-  console.log(user, links.records);
   return {
     props: { user, links },
 
