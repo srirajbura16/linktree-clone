@@ -1,6 +1,3 @@
-import { useSession, getSession } from "next-auth/react";
-import { useRouter } from "next/router";
-
 export const DB_PATH = `${process.env.XATA_URL}/db/Linktree:${process.env.XATA_BRANCH}`;
 
 export async function getXataHeaders() {
@@ -10,13 +7,4 @@ export async function getXataHeaders() {
   };
 }
 
-export async function checkAuth() {
-  const { data: session } = useSession();
-  const router = useRouter();
-
-  if (session) {
-    return;
-  }
-
-  router.push("/api/auth/signin");
-}
+export async function checkAuth_client() {}

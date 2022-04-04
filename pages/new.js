@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 export default function New() {
   const { data: session, status } = useSession();
+  console.log(session);
   const router = useRouter();
 
   if (status === "loading") {
@@ -13,12 +14,25 @@ export default function New() {
   if (status === "unauthenticated") {
     router.push("/api/auth/signin");
   }
+
   return (
     <div>
-      <ul>
-        <li>[*]check logged in or redirect</li>
-        <li>create links when logged in(form)</li>
-      </ul>
+      <form action="/api/create-link" method="post">
+        <div>
+          <label htmlFor="title">Title</label>
+          <input type="text" id="title" name="title" />
+        </div>
+        <div>
+          <label htmlFor="url">Url</label>
+          <input
+            type="url"
+            id="url"
+            name="url"
+            placeholder="https://example.com"
+          />
+        </div>
+        <button type="submit">Create</button>
+      </form>
     </div>
   );
 }
