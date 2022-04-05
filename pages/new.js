@@ -33,7 +33,7 @@ export default function New() {
       method: "POST",
     });
 
-    router.push(`/srirajbura`);
+    router.push(`/`);
   };
 
   return (
