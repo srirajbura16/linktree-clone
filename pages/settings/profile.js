@@ -1,5 +1,4 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
 import FormLayout from "../../components/Layouts/FormLayout";
 
 export default function Profile() {
@@ -7,39 +6,37 @@ export default function Profile() {
     <FormLayout>
       <h1>Public Information</h1>
       <hr />
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter name" />
-        </Form.Group>
+      <form>
+        <div>
+          <label>Name</label>
+          <input type="text" placeholder="Enter name" />
+        </div>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-        </Form.Group>
+        <div>
+          <label>Email address</label>
+          <input type="email" placeholder="Enter email" />
+        </div>
 
-        <Form.Group className="mb-3" controlId="formBasicUsername">
-          <Form.Label>Username</Form.Label>
-          <Form.Control type="text" placeholder="Enter Username" />
-        </Form.Group>
+        <div>
+          <label>Username</label>
+          <input type="text" placeholder="Enter Username" />
+        </div>
 
-        <Form.Group className="mb-3" controlId="formBasicDescription">
-          <Form.Label>Description</Form.Label>
-          <Form.Control
+        <div>
+          <label>Description</label>
+          <input
             type="textarea"
             placeholder="Tell us a little bit about yourself"
           />
-        </Form.Group>
+        </div>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
+        <div>
+          <label>Password</label>
+          <input type="password" placeholder="Password" />
+        </div>
 
-        <Button variant="success" type="submit">
-          Update
-        </Button>
-      </Form>
+        <button type="submit">Update</button>
+      </form>
     </FormLayout>
   );
 }
