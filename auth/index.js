@@ -142,7 +142,22 @@ export default function XataAdapter(client, options = {}) {
 
     // Never called by next-auth, left unimplemented
     async deleteUser(userId) {
-      throw new Error("Not implemented");
+      console.log("deleteUser", userId);
+
+      const response = await fetch(`${DB_PATH}/tables/Users/data/${userId}`, {
+        method: "DELETE",
+        headers: {
+          ...(await getXataHeaders()),
+        },
+      });
+
+      if (response.status > 299) {
+        return { message: "Error deleting your account, please try again" };
+      }
+
+      return {
+        message: "Successfully deleted your account",
+      };
     },
 
     async linkAccount(account) {

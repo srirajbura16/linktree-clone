@@ -4,17 +4,8 @@ import { useRouter } from "next/router";
 import { getXataHeaders, DB_PATH } from "../services";
 
 export default function New() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
-  console.log(session, "FROM NEW PAGE");
-
-  if (status === "loading") {
-    return <p>Loading...</p>;
-  }
-
-  if (status === "unauthenticated") {
-    router.push("/api/auth/signin");
-  }
 
   const createLink = async (event) => {
     event.preventDefault();
@@ -56,4 +47,21 @@ export default function New() {
       </form>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/api/auth/signin",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
 }
