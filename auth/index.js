@@ -137,7 +137,25 @@ export default function XataAdapter(client, options = {}) {
 
     async updateUser(user) {
       console.log("udpateUser", user);
-      return null;
+
+      const response = await fetch(
+        `${DB_PATH}/tables/nextauth_providers/query`,
+        {
+          method: "PATCH",
+          headers: {
+            ...(await getXataHeaders()),
+          },
+          body: JSON.stringify(user),
+        }
+      );
+
+      if (response.status > 299) {
+        return { message: "Error updating your account, please try again" };
+      }
+
+      return {
+        message: "update complete",
+      };
     },
 
     // Never called by next-auth, left unimplemented
