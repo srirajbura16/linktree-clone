@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
 import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { getXataHeaders, DB_PATH } from "../services";
+import { getXataHeaders } from "../services";
 
 export default function New() {
   const { data: session } = useSession();

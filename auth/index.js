@@ -150,7 +150,7 @@ export default function XataAdapter(client, options = {}) {
       );
 
       if (response.status > 299) {
-        return { message: "Error updating your account, please try again" };
+        return { message: "Error updating your account, please try again." };
       }
 
       return {
@@ -170,7 +170,7 @@ export default function XataAdapter(client, options = {}) {
       });
 
       if (response.status > 299) {
-        return { message: "Error deleting your account, please try again" };
+        return { message: "Error deleting your account, please try again." };
       }
 
       return {

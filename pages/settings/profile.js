@@ -4,7 +4,7 @@ import FormLayout from "../../components/Layouts/FormLayout";
 export default function Profile() {
   return (
     <FormLayout>
-      <h1>Public Information</h1>
+      <h2>Public Information</h2>
       <hr />
       <form>
         <div>

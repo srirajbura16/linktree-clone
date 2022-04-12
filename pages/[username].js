@@ -7,7 +7,7 @@ export default function Username({ user, links }) {
   const { name, photo, description } = user.records[0];
 
   return (
-    <div className={styles.container}>
+    <div className="px-4 max-w-3xl mx-auto text-center mt-8">
       <Head>
         <title>John Doe</title>
         <meta name="description" content="Sriraj Bura's Links" />
@@ -16,19 +16,18 @@ export default function Username({ user, links }) {
 
       <main className={styles.main}>
         <figure
-          className={styles.avatar}
+          className="w-52 h-52 bg-black rounded-full mx-auto bg-cover	bg-center"
           style={{ backgroundImage: `url(${photo})` }}
         />
         <section>
-          <h2 className={styles.name}>{name}</h2>
-          <p className={styles.description}>{description}</p>
+          <h2 className="text-4xl mt-9">{name}</h2>
+          <p className="mt-2 mb-4">{description}</p>
         </section>
-        <section className={styles.links}>
+        <section className={styles.links} className="flex flex-col">
           {links.records.map((link) => {
             return <Url link={link} key={link.id} />;
           })}
         </section>
-        <div className={styles.social_icons}></div>
       </main>
     </div>
   );
