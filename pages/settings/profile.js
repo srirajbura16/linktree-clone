@@ -1,40 +1,47 @@
 import FormLayout from "../../components/Layouts/FormLayout";
+import {
+  FormErrorMessage,
+  FormLabel,
+  FormControl,
+  Input,
+  Button,
+} from "@chakra-ui/react";
 
 export default function Profile() {
   return (
-    <FormLayout>
-      <h2>Public Information</h2>
-      <hr />
+    <FormLayout title="Profile">
       <form>
-        <div>
-          <label>Name</label>
-          <input type="text" placeholder="Enter name" />
-        </div>
+        <FormControl>
+          <FormLabel>Name</FormLabel>
+          <Input type="text" placeholder="Enter name" />
+        </FormControl>
 
-        <div>
-          <label>Email address</label>
-          <input type="email" placeholder="Enter email" />
-        </div>
+        <FormControl>
+          <FormLabel>Email address</FormLabel>
+          <Input type="email" placeholder="Enter email" />
+        </FormControl>
 
-        <div>
-          <label>Username</label>
-          <input type="text" placeholder="Enter Username" />
-        </div>
+        <FormControl>
+          <FormLabel>Username</FormLabel>
+          <Input type="text" placeholder="Enter Username" />
+        </FormControl>
 
-        <div>
-          <label>Description</label>
-          <input
+        <FormControl>
+          <FormLabel>Description</FormLabel>
+          <Input
             type="textarea"
             placeholder="Tell us a little bit about yourself"
           />
-        </div>
+        </FormControl>
 
-        <div>
-          <label>Password</label>
-          <input type="password" placeholder="Password" />
-        </div>
+        <FormControl>
+          <FormLabel>Password</FormLabel>
+          <Input type="password" placeholder="Password" />
+        </FormControl>
 
-        <button type="submit">Update</button>
+        <Button colorScheme="blue" type="submit" className="w-full">
+          Update
+        </Button>
       </form>
     </FormLayout>
   );

@@ -1,6 +1,14 @@
 import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { getXataHeaders } from "../services";
+import FormLayout from "../components/Layouts/FormLayout";
+import {
+  FormErrorMessage,
+  FormLabel,
+  FormControl,
+  Input,
+  Button,
+} from "@chakra-ui/react";
 
 export default function New() {
   const { data: session } = useSession();
@@ -27,24 +35,28 @@ export default function New() {
   };
 
   return (
-    <div>
+    <FormLayout title="Create new link">
       <form onSubmit={createLink} method="post">
-        <div>
-          <label htmlFor="title">Title</label>
-          <input type="text" id="title" name="title" />
-        </div>
-        <div>
-          <label htmlFor="url">Url</label>
-          <input
+        <FormControl>
+          <FormLabel htmlFor="title">Title</FormLabel>
+          <Input type="text" id="title" name="title" required />
+        </FormControl>
+
+        <FormControl>
+          <FormLabel htmlFor="url">Url</FormLabel>
+          <Input
             type="url"
             id="url"
             name="url"
             placeholder="https://example.com"
+            required
           />
-        </div>
-        <button type="submit">Create</button>
+        </FormControl>
+        <Button type="submit" colorScheme="blue" className="w-full">
+          Create
+        </Button>
       </form>
-    </div>
+    </FormLayout>
   );
 }
 
