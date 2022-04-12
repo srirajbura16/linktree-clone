@@ -1,4 +1,3 @@
-import React from "react";
 import FormLayout from "../../components/Layouts/FormLayout";
 
 export default function Account() {

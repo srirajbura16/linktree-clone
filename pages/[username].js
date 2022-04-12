@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import Url from "../components/Url";
 import { getXataHeaders, DB_PATH } from "../services";
 import Avatar from "../components/Avatar";
