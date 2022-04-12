@@ -1,12 +1,12 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import Avatar from "../components/Avatar";
 export default function Home() {
   const { data: session, status } = useSession();
 
   return (
-    <div className={styles.container}>
+    <div className="mx-auto text-center my-4 text-2xl">
       <Head>
         <title>Induit</title>
         <meta
@@ -16,14 +16,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className="">
         <div>
           {status === "authenticated" ? (
             <div>
-              <figure
-                className={styles.avatar}
-                style={{ backgroundImage: `url(${session.user.image})` }}
-              />
+              <Avatar image={session.user.image} />
               <p>Signed in as {session.user.name}</p>
               <p>{session.user.email}</p>
             </div>

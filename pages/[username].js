@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Url from "../components/Url";
 import { getXataHeaders, DB_PATH } from "../services";
+import Avatar from "../components/Avatar";
 
 export default function Username({ user, links }) {
   const { name, photo, description } = user.records[0];
@@ -9,21 +10,19 @@ export default function Username({ user, links }) {
   return (
     <div className="px-4 max-w-3xl mx-auto text-center mt-8">
       <Head>
-        <title>John Doe</title>
-        <meta name="description" content="Sriraj Bura's Links" />
+        <title>{name}</title>
+        <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <figure
-          className="w-52 h-52 bg-black rounded-full mx-auto bg-cover	bg-center"
-          style={{ backgroundImage: `url(${photo})` }}
-        />
+      <main className="">
+        <Avatar image={photo} />
+
         <section>
           <h2 className="text-4xl mt-9">{name}</h2>
           <p className="mt-2 mb-4">{description}</p>
         </section>
-        <section className={styles.links} className="flex flex-col">
+        <section className="flex flex-col">
           {links.records.map((link) => {
             return <Url link={link} key={link.id} />;
           })}
