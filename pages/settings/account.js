@@ -6,11 +6,36 @@ import {
   Input,
   Button,
 } from "@chakra-ui/react";
+import { getXataHeaders } from "../../services";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Account() {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const updateUser = async (event) => {
+    event.preventDefault();
+
+    const { username } = event.target;
+
+    const res = await fetch("/api/update-user", {
+      body: JSON.stringify({
+        username: username.value,
+        userId: session.user.id,
+      }),
+      headers: {
+        ...(await getXataHeaders()),
+      },
+      method: "PATCH",
+    });
+
+    router.push(`/`);
+  };
+
   return (
     <FormLayout title="Account">
-      <form>
+      <form onSubmit={updateUser} method="patch">
         <FormControl>
           <label htmlFor="username">Username</label>
           <Input type="text" name="username" className="text-xl mt-2" />

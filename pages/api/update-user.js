@@ -1,18 +1,17 @@
 import { getXataHeaders, DB_PATH } from "../../services";
 
 export default async function handler(req, res) {
-  const { userId, ...link } = req.body;
+  const { userId, ...userInfo } = req.body;
 
-  const link_res = await fetch(`${DB_PATH}/tables/Links/data`, {
-    method: "POST",
+  const user_res = await fetch(`${DB_PATH}/tables/Users/data/${userId}`, {
+    method: "PATCH",
     headers: {
       ...(await getXataHeaders()),
     },
     body: JSON.stringify({
-      user: userId,
-      ...link,
+      ...userInfo,
     }),
   });
 
-  res.redirect("/");
+  res.status(200).json({ message: "updated" });
 }

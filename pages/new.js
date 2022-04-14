@@ -23,7 +23,7 @@ export default function New() {
       body: JSON.stringify({
         title: title.value,
         url: url.value,
-        userID: session.user.id,
+        userId: session.user.id,
       }),
       headers: {
         ...(await getXataHeaders()),
