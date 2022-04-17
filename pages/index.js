@@ -14,7 +14,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className=""></main>
+      <main className="">
+        <h1 className="text-2xl  md:text-4xl text-center font-bold">
+          The Conduit for all your internet presence.
+        </h1>
+      </main>
     </div>
   );
 }

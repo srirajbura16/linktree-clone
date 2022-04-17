@@ -30,7 +30,7 @@ export default function Nav() {
                 <Link href={"/dashboard"}>dashboard</Link>
               </MenuItem>
               <MenuItem>
-                <Link href={"/settings"}>settings</Link>
+                <Link href={"/settings/profile"}>settings</Link>
               </MenuItem>
             </MenuList>
           </Menu>
