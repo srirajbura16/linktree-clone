@@ -13,8 +13,8 @@ export default function Nav() {
   const { data: session } = useSession();
 
   return (
-    <div className="bg-black">
-      <nav className=" text-red-400 flex flex-wrap justify-between items-center mx-auto ">
+    <div className="bg-black ">
+      <nav className="text-3xl mx-4 text-red-400 flex flex-wrap justify-between items-center ">
         <h1>Linktree</h1>
         {session ? (
           <Menu>
@@ -22,7 +22,9 @@ export default function Nav() {
               Profile
             </MenuButton>
             <MenuList>
-              <div className="text-base">signed in as {session.user.name}</div>
+              <div className="text-base mx-auto">
+                signed in as {session.user.name}
+              </div>
               <MenuDivider />
               <MenuItem>
                 <Link href={"/dashboard"}>dashboard</Link>
