@@ -19,7 +19,7 @@ export default function New() {
 
     const { title, url } = event.target;
 
-    const res = await fetch("/api/create-link", {
+    const res = await fetch("/api/links/create", {
       body: JSON.stringify({
         title: title.value,
         url: url.value,

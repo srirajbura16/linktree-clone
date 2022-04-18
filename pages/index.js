@@ -1,10 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
-import Nav from "../components/Nav";
+import { Button } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="sm:bg-amber-500">
       <Head>
         <title>Induit</title>
         <meta
@@ -14,10 +14,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="">
-        <h1 className="text-2xl  md:text-4xl text-center font-bold">
-          The Conduit for all your internet presence.
-        </h1>
+      <main className="bg-white max-w-screen-lg mx-auto">
+        <div className=" text-center">
+          <h1 className="text-2xl md:text-4xl  font-bold p-4 pt-8">
+            The Conduit for all your internet presence.
+          </h1>
+          <Link href="/api/auth/signin">
+            <Button colorScheme="purple">Sign Up</Button>
+          </Link>
+        </div>
       </main>
     </div>
   );

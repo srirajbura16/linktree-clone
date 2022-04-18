@@ -1,4 +1,4 @@
-import { getXataHeaders, DB_PATH } from "../../services";
+import { getXataHeaders, DB_PATH } from "../../../services";
 
 export default async function handler(req, res) {
   const { userId, ...userInfo } = req.body;

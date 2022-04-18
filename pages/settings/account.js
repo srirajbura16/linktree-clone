@@ -20,7 +20,7 @@ export default function Account() {
 
     const { username } = event.target;
 
-    const res = await fetch("/api/update-user", {
+    const res = await fetch("/api/user/update-user", {
       body: JSON.stringify({
         username: username.value,
         userId: session.user.id,

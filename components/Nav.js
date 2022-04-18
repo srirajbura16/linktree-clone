@@ -13,9 +13,9 @@ export default function Nav() {
   const { data: session } = useSession();
 
   return (
-    <div className="bg-black ">
-      <nav className="text-3xl mx-4 text-red-400 flex flex-wrap justify-between items-center ">
-        <h1>Linktree</h1>
+    <div className="bg-black py-2">
+      <nav className="text-2xl md:text-3xl mx-8 text-red-400 flex flex-wrap justify-between items-center ">
+        <Link href="/">Linktree</Link>
         {session ? (
           <Menu>
             <MenuButton as={Button} variant="outline">
@@ -31,6 +31,10 @@ export default function Nav() {
               </MenuItem>
               <MenuItem>
                 <Link href={"/settings/profile"}>settings</Link>
+              </MenuItem>
+              <MenuDivider />
+              <MenuItem>
+                <Link href={"/api/auth/signout"}>Log Out</Link>
               </MenuItem>
             </MenuList>
           </Menu>
