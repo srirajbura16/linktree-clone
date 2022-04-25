@@ -20,7 +20,7 @@ export default function Home() {
             The Conduit for all your internet presence.
           </h1>
           <Link href="/api/auth/signin">
-            <Button colorScheme="purple">Sign Up</Button>
+            <button className="p-4 bg-violet-500 text-white">Sign Up</button>
           </Link>
         </div>
       </main>
