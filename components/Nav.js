@@ -22,9 +22,11 @@ export default function Nav() {
               Profile
             </MenuButton>
             <MenuList>
-              <div className="text-base mx-auto">
-                signed in as {session.user.name}
-              </div>
+              <MenuItem>
+                <div className="text-base mx-auto">
+                  signed in as {session.user.name}
+                </div>
+              </MenuItem>
               <MenuDivider />
               <MenuItem>
                 <Link href={"/dashboard"}>dashboard</Link>

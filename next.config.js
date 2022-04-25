@@ -7,6 +7,11 @@ module.exports = {
         destination: "/settings/profile",
         permanent: true,
       },
+      {
+        source: "/login",
+        destination: "/api/auth/signin",
+        permanent: true,
+      },
     ];
   },
 };
