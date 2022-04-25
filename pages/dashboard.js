@@ -11,7 +11,7 @@ export default function dashboard({ links }) {
         {links.map((link) => {
           const { title, url, id } = link;
           return (
-            <div className="p-4 bg-gray-400 m-4">
+            <div key={id} className="p-4 bg-gray-400 m-4">
               <div className="flex justify-between">
                 <h4 className="text-2xl">{title}</h4>
                 <div>
