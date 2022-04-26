@@ -7,11 +7,12 @@ export default function MyApp({
   Component,
   pageProps: { session, ...pageProps },
 }) {
+  const getLayout = Component.getLayout || ((page) => page);
   return (
     <SessionProvider session={session}>
       <ChakraProvider>
         <Nav />
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </ChakraProvider>
     </SessionProvider>
   );

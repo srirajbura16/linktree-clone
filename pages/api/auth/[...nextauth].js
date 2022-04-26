@@ -3,6 +3,7 @@ import GithubProvider from "next-auth/providers/github";
 import TwitterProvider from "next-auth/providers/twitter";
 import GoogleProvider from "next-auth/providers/google";
 import XataAdapter from "../../../auth";
+import { getXataHeaders, DB_PATH } from "../../../services";
 
 export default NextAuth({
   providers: [
@@ -10,11 +11,6 @@ export default NextAuth({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-    // TwitterProvider({
-    //   clientId: process.env.TWITTER_ID,
-    //   clientSecret: process.env.TWITTER_SECRET,
-    //   version: "2.0",
-    // }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
@@ -22,7 +18,22 @@ export default NextAuth({
   ],
 
   callbacks: {
+    async jwt({ token }) {
+      if (!token.username) {
+        const res = await fetch(`${DB_PATH}/tables/Users/data/${token.sub}`, {
+          method: "GET",
+          headers: {
+            ...(await getXataHeaders()),
+          },
+        });
+        const user = await res.json();
+        console.log(user, "USER FROM JWT");
+        token.username = user.username;
+      }
+      return token;
+    },
     async session({ session, token }) {
+      session.user.username = token.username;
       session.user.id = token.sub;
       return session;
     },

@@ -34,17 +34,12 @@ export default function LinkModel({ children, title, url, id }) {
             <ModalBody pb={6}>
               <FormControl>
                 <FormLabel htmlFor="title">Title</FormLabel>
-                <Input type="text" name="title" required />
+                <Input type="text" name="title" placeholder={title} required />
               </FormControl>
 
               <FormControl>
                 <FormLabel htmlFor="url">Url</FormLabel>
-                <Input
-                  type="url"
-                  name="url"
-                  placeholder="https://example.com"
-                  required
-                />
+                <Input type="url" name="url" placeholder={url} required />
               </FormControl>
               <input type="hidden" value={id} name="linkId" />
             </ModalBody>
