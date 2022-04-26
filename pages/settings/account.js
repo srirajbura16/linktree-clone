@@ -1,4 +1,3 @@
-import FormLayout from "../../components/Layouts/FormLayout";
 import {
   FormErrorMessage,
   FormLabel,
@@ -36,17 +35,15 @@ export default function Account() {
 
   return (
     <SettingsLayout>
-      <FormLayout title="Account">
-        <form onSubmit={updateUser} method="patch">
-          <FormControl>
-            <label htmlFor="username">Username</label>
-            <Input type="text" name="username" className="text-xl mt-2" />
-          </FormControl>
-          <Button type="submit" colorScheme="blue" className="w-full">
-            Change username
-          </Button>
-        </form>
-      </FormLayout>
+      <form onSubmit={updateUser} method="patch">
+        <FormControl>
+          <label htmlFor="username">Username</label>
+          <Input type="text" name="username" className="text-xl mt-2" />
+        </FormControl>
+        <Button type="submit" colorScheme="blue" className="w-full">
+          Change username
+        </Button>
+      </form>
     </SettingsLayout>
   );
 }
