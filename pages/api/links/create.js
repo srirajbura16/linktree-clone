@@ -1,7 +1,12 @@
 import { getXataHeaders, DB_PATH } from "../../../services";
+import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
-  const { userId, ...link } = req.body;
+  const session = await getSession({ req });
+  const userId = session.user.id;
+
+  const { ...link } = req.body;
+  console.log(link);
 
   const link_res = await fetch(`${DB_PATH}/tables/Links/data`, {
     method: "POST",
@@ -14,5 +19,7 @@ export default async function handler(req, res) {
     }),
   });
 
+  const data = await link_res.json();
+  console.log(data);
   res.redirect("/dashboard");
 }

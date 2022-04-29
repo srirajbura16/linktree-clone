@@ -3,11 +3,13 @@ import {
   DB_PATH,
   removeUnenteredData,
 } from "../../../services";
+import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
-  const { userId, ...userInfo } = req.body;
+  const session = await getSession({ req });
+  const userId = session.user.id;
 
-  const updatedUserInfo = await removeUnenteredData(userInfo);
+  const updatedUserInfo = await removeUnenteredData(req.body);
 
   const user_res = await fetch(`${DB_PATH}/tables/Users/data/${userId}`, {
     method: "PATCH",
@@ -19,7 +21,7 @@ export default async function handler(req, res) {
     }),
   });
 
-  // const data = await user_res.json();
+  const data = await user_res.json();
 
-  res.redirect("/dashboard");
+  res.redirect("/settings");
 }

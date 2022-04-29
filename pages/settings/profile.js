@@ -25,7 +25,6 @@ export default function Profile() {
             name="description"
           />
         </FormControl>
-        <input type="hidden" name="userId" value={session.user.id} />
 
         <Button colorScheme="blue" type="submit" className="w-full">
           Update

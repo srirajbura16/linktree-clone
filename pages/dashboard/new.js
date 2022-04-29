@@ -1,4 +1,4 @@
-import { useSession, getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import DashBoardLayout from "../../components/Layouts/DashBoardLayout";
 import { FormLabel, FormControl, Input, Button } from "@chakra-ui/react";
 
@@ -7,8 +7,6 @@ New.getLayout = function getLayout(page) {
 };
 
 export default function New() {
-  const { data: session } = useSession();
-
   return (
     <form action="/api/links/create" method="post">
       <FormControl>
@@ -26,7 +24,6 @@ export default function New() {
           required
         />
       </FormControl>
-      <input type="hidden" name="userId" value={session.user.id} />
       <Button type="submit" colorScheme="blue" className="w-full">
         Create
       </Button>
