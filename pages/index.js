@@ -6,7 +6,7 @@ import { useSession, getSession } from "next-auth/react";
 export default function Home() {
   const { data: session } = useSession();
   return (
-    <div className="sm:bg-amber-500">
+    <div>
       <Head>
         <title>Induit</title>
         <meta
@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-white max-w-screen-lg mx-auto">
+      <main className=" mx-auto">
         <div className=" text-center">
           <h1 className="text-2xl md:text-4xl  font-bold p-4 pt-8">
             The Conduit for all your internet presence.

@@ -8,6 +8,7 @@ We're taking it step by step in building this application, so the tech added her
 
 - NextJS
 - Xatabase
+- Tailwind and Charka UI
 
 ## Media
 

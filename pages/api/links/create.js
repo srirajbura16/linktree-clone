@@ -6,7 +6,6 @@ export default async function handler(req, res) {
   const userId = session.user.id;
 
   const { ...link } = req.body;
-  console.log(link);
 
   const link_res = await fetch(`${DB_PATH}/tables/Links/data`, {
     method: "POST",
@@ -19,7 +18,6 @@ export default async function handler(req, res) {
     }),
   });
 
-  const data = await link_res.json();
-  console.log(data);
+  // const data = await link_res.json();
   res.redirect("/dashboard");
 }
