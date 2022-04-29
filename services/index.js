@@ -7,4 +7,9 @@ export async function getXataHeaders() {
   };
 }
 
-export async function checkAuth_client() {}
+export async function removeUnenteredData(obj) {
+  const asArray = Object.entries(obj);
+  const filtered = asArray.filter(([key, value]) => value !== "");
+
+  return Object.fromEntries(filtered);
+}

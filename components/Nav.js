@@ -28,16 +28,16 @@ export default function Nav() {
                 </div>
               </MenuItem>
               <MenuDivider />
-              <MenuItem>
-                <Link href={"/dashboard"}>dashboard</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href={"/settings/profile"}>settings</Link>
-              </MenuItem>
+              <Link href={"/dashboard"}>
+                <MenuItem>Dashboard</MenuItem>
+              </Link>
+              <Link href={"/settings/profile"}>
+                <MenuItem>Settings</MenuItem>
+              </Link>
               <MenuDivider />
-              <MenuItem>
-                <Link href={"/api/auth/signout"}>Log Out</Link>
-              </MenuItem>
+              <Link href={"/api/auth/signout"}>
+                <MenuItem>Log out</MenuItem>
+              </Link>
             </MenuList>
           </Menu>
         ) : (

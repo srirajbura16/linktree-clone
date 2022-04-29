@@ -1,43 +1,31 @@
-import {
-  FormErrorMessage,
-  FormLabel,
-  FormControl,
-  Input,
-  Button,
-} from "@chakra-ui/react";
+import { FormLabel, FormControl, Input, Button } from "@chakra-ui/react";
 import SettingsLayout from "../../components/Layouts/SettingsLayout";
+import { useSession } from "next-auth/react";
 
 export default function Profile() {
+  const { data: session } = useSession();
   return (
-    <SettingsLayout>
-      <form>
+    <SettingsLayout title="Profile">
+      <form action="/api/user/update" method="post" className="child:mb-4">
         <FormControl>
-          <FormLabel>Name</FormLabel>
-          <Input type="text" placeholder="Enter name" />
+          <FormLabel htmlFor="name">Name</FormLabel>
+          <Input type="text" name="name" placeholder="Enter name" />
         </FormControl>
 
         <FormControl>
-          <FormLabel>Email address</FormLabel>
-          <Input type="email" placeholder="Enter email" />
+          <FormLabel htmlFor="email">Email address</FormLabel>
+          <Input type="email" name="email" placeholder="Enter email" />
         </FormControl>
 
         <FormControl>
-          <FormLabel>Username</FormLabel>
-          <Input type="text" placeholder="Enter Username" />
-        </FormControl>
-
-        <FormControl>
-          <FormLabel>Description</FormLabel>
+          <FormLabel htmlFor="description">Description</FormLabel>
           <Input
             type="textarea"
             placeholder="Tell us a little bit about yourself"
+            name="description"
           />
         </FormControl>
-
-        <FormControl>
-          <FormLabel>Password</FormLabel>
-          <Input type="password" placeholder="Password" />
-        </FormControl>
+        <input type="hidden" name="userId" value={session.user.id} />
 
         <Button colorScheme="blue" type="submit" className="w-full">
           Update
