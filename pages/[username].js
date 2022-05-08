@@ -19,10 +19,7 @@ export default function Username({ user, links }) {
 
         <section>
           <h2 className="mt-6 font-bold">{name}</h2>
-          <p className="mt-2 mb-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
-            nisi?{description}
-          </p>
+          <p className="mt-2 mb-4">{description}</p>
         </section>
         <section className="flex flex-col">
           {links.records.map((link) => {
