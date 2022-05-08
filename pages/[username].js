@@ -14,12 +14,15 @@ export default function Username({ user, links }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="">
+      <main className="text-base lg:text-2xl">
         <Avatar image={photo} />
 
         <section>
-          <h2 className="text-4xl mt-9">{name}</h2>
-          <p className="mt-2 mb-4">{description}</p>
+          <h2 className="mt-6 font-bold">{name}</h2>
+          <p className="mt-2 mb-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
+            nisi?{description}
+          </p>
         </section>
         <section className="flex flex-col">
           {links.records.map((link) => {
