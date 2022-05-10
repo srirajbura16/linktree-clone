@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -7,22 +7,30 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-} from "@chakra-ui/react";
-import {
-  FormErrorMessage,
   FormLabel,
   FormControl,
   Input,
   Button,
 } from "@chakra-ui/react";
-import { useDisclosure } from "@chakra-ui/react";
 
-export default function LinkModel({ children, title, url, id }) {
+import { useDisclosure } from "@chakra-ui/react";
+interface LinkModalProps {
+  title: string;
+  url: string;
+  id: string;
+  children: ReactNode;
+}
+
+export default function LinkModal({
+  children,
+  title,
+  url,
+  id,
+}: LinkModalProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      {/* <Button onClick={onOpen}>{children}</Button> */}
       <div onClick={onOpen}>{children}</div>
 
       <Modal isOpen={isOpen} onClose={onClose}>

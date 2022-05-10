@@ -1,8 +1,9 @@
 import { getSession } from "next-auth/react";
 import DashBoardLayout from "../../components/Layouts/DashBoardLayout";
 import { FormLabel, FormControl, Input, Button } from "@chakra-ui/react";
+import { GetServerSidePropsContext, NextPage } from "next";
 
-New.getLayout = function getLayout(page) {
+New.getLayout = function getLayout(page: NextPage) {
   return <DashBoardLayout>{page}</DashBoardLayout>;
 };
 
@@ -31,7 +32,7 @@ export default function New() {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession(context);
 
   if (!session) {

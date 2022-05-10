@@ -1,8 +1,8 @@
 import { FormControl, Input, Button } from "@chakra-ui/react";
-import { useSession } from "next-auth/react";
+import { NextPage } from "next";
 import SettingsLayout from "../../components/Layouts/SettingsLayout";
 
-Account.getLayout = function getLayout(page) {
+Account.getLayout = function getLayout(page: NextPage) {
   return <SettingsLayout title="Account">{page}</SettingsLayout>;
 };
 

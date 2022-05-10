@@ -2,9 +2,20 @@ import Head from "next/head";
 import Url from "../components/Url";
 import { getXataHeaders, DB_PATH } from "../services";
 import Avatar from "../components/Avatar";
+import { Link } from "../services/types";
+import { GetStaticProps } from "next";
 
-export default function Username({ user, links }) {
-  const { name, photo, description } = user.records[0];
+interface UsernameProps {
+  user: {
+    name: string;
+    photo: string;
+    description: string;
+  };
+  links: Array<Link>;
+}
+
+export default function Username({ user, links }: UsernameProps) {
+  const { name, photo, description } = user;
 
   return (
     <div className="px-4 max-w-3xl mx-auto text-center mt-8">
@@ -22,7 +33,7 @@ export default function Username({ user, links }) {
           <p className="mt-2 mb-4">{description}</p>
         </section>
         <section className="flex flex-col">
-          {links.records.map((link) => {
+          {links.map((link) => {
             return <Url link={link} key={link.id} />;
           })}
         </section>
@@ -46,7 +57,8 @@ export async function getStaticProps({ params }) {
     },
     body: JSON.stringify(userBodyRaw),
   });
-  const user = await user_res.json();
+  let user = await user_res.json();
+
   const userId = user.records[0].id;
 
   var linksBodyRaw = {
@@ -63,7 +75,9 @@ export async function getStaticProps({ params }) {
     },
     body: JSON.stringify(linksBodyRaw),
   });
-  const links = await links_res.json();
+  let links = await links_res.json();
+  user = user.records[0];
+  links = links.records;
   return {
     props: { user, links },
 

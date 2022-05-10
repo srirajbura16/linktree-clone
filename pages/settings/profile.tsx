@@ -1,13 +1,12 @@
 import { FormLabel, FormControl, Input, Button } from "@chakra-ui/react";
 import SettingsLayout from "../../components/Layouts/SettingsLayout";
-import { useSession } from "next-auth/react";
+import { NextPage } from "next";
 
-Profile.getLayout = function getLayout(page) {
+Profile.getLayout = function getLayout(page: NextPage) {
   return <SettingsLayout title="Profile">{page}</SettingsLayout>;
 };
 
 export default function Profile() {
-  const { data: session } = useSession();
   return (
     <form action="/api/user/update" method="post" className="child:mb-4">
       <FormControl>

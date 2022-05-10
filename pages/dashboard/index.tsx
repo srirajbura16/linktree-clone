@@ -1,14 +1,24 @@
 import { getSession } from "next-auth/react";
 import { getXataHeaders, DB_PATH } from "../../services";
 import DashBoardLayout from "../../components/Layouts/DashBoardLayout";
-import LinkModel from "../../components/LinkModel";
+import LinkModel from "../../components/LinkModal";
 import { CloseIcon, EditIcon } from "@chakra-ui/icons";
+import { GetServerSidePropsContext, NextPage } from "next";
 
-Dashboard.getLayout = function getLayout(page) {
+Dashboard.getLayout = function getLayout(page: NextPage) {
   return <DashBoardLayout>{page}</DashBoardLayout>;
 };
 
-export default function Dashboard({ links }) {
+interface Link {
+  title: string;
+  url: string;
+  id: string;
+}
+interface DashboardProps {
+  links: Array<Link>;
+}
+
+export default function Dashboard({ links }: DashboardProps) {
   return (
     <div className="">
       {links.map((link) => {
@@ -41,7 +51,7 @@ export default function Dashboard({ links }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession(context);
   if (!session) {
     return {
@@ -55,7 +65,7 @@ export async function getServerSideProps(context) {
   var linksBodyRaw = {
     columns: ["*"],
     filter: {
-      "user.id": session.user.id,
+      "user.id": session?.user?.id!,
     },
   };
 

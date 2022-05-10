@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { Button } from "@chakra-ui/react";
-import { useSession, getSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
   const { data: session } = useSession();
