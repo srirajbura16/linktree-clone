@@ -41,7 +41,7 @@ export default function Username({ user, links }: UsernameProps) {
   );
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   var userBodyRaw = {
     columns: ["*"],
     filter: {
@@ -98,7 +98,7 @@ export async function getStaticPaths() {
 
   const users = await res.json();
 
-  const paths = users.records.map((user) => ({
+  const paths = users.records.map((user: { username: string }) => ({
     params: { username: user.username },
   }));
 
