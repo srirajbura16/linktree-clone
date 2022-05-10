@@ -3,7 +3,3 @@ export interface Link {
   url: string;
   id: string;
 }
-
-export interface Links {
-  links: Array<Link>;
-}

@@ -24,7 +24,7 @@ export default function Nav() {
             <MenuList>
               <MenuItem>
                 <div className="text-base mx-auto">
-                  signed in as {session.user.name}
+                  signed in as {session?.user?.name}
                 </div>
               </MenuItem>
               <MenuDivider />

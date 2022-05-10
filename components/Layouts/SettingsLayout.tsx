@@ -1,7 +1,15 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 
-export default function SettingsLayout({ children, title }) {
+interface SettingsLayoutProps {
+  children: ReactNode;
+  title: string;
+}
+
+export default function SettingsLayout({
+  children,
+  title,
+}: SettingsLayoutProps) {
   return (
     <div className="flex flex-col sm:flex-row max-w-4xl mx-auto p-4 child:px-4 child:pt-4">
       <div className="text-2xl mb-4 child:underline child:text-amber-500 child-hover:text-black">

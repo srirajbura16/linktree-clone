@@ -27,7 +27,6 @@ export default NextAuth({
           },
         });
         const user = await res.json();
-        console.log(user, "USER FROM JWT");
         token.username = user.username;
       }
       return token;

@@ -3,7 +3,6 @@ import Url from "../components/Url";
 import { getXataHeaders, DB_PATH } from "../services";
 import Avatar from "../components/Avatar";
 import { Link } from "../services/types";
-import { GetStaticProps } from "next";
 
 interface UsernameProps {
   user: {
@@ -34,7 +33,7 @@ export default function Username({ user, links }: UsernameProps) {
         </section>
         <section className="flex flex-col">
           {links.map((link) => {
-            return <Url link={link} key={link.id} />;
+            return <Url title={link.title} url={link.url} key={link.id} />;
           })}
         </section>
       </main>
